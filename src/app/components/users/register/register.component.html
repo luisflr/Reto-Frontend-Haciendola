@@ -1,0 +1,38 @@
+<div class="register-component">
+  <h1>SIGN UP</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="Username">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input formControlName="confirmPassword" matInput [type]="hideConfirmPassword ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirmPassword">
+          <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-error *ngIf="hasErrors" class="error-password">Debe confirmar su contraseña</mat-error>
+    </p>
+    <div class="example-button-container">
+      <button type="submit" mat-fab aria-label="Login Button">
+        <span>REGISTER</span>
+      </button>
+    </div>
+    <div class="span-container">
+      <a routerLink="/login" class="span-container__text">Sign in</a>
+    </div>
+  </form>
+</div>

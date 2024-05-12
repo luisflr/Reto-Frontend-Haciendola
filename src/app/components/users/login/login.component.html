@@ -1,0 +1,28 @@
+<div class="login-component">
+  <img sizes="(max-width: 300px) 50vw, 150px" src="https://haciendola.com/cdn/shop/files/logo_4052ea8c-c242-4a61-a83b-910d8214ffd8.png?v=1705680919&width=225" />
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput placeholder="Username">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" matInput [type]="hidePassword ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <div class="example-button-container">
+      <button type="submit" mat-fab aria-label="Login Button">
+        <span>LOGIN</span>
+      </button>
+    </div>
+    <div class="span-container">
+      You don't have an account? <a routerLink="/register" class="span-container__text"> Sign up</a>
+    </div>
+  </form>
+</div>
