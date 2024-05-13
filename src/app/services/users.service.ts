@@ -11,7 +11,7 @@ export class UsersService {
   private baseUrl: string;
   
   constructor() {
-    this.baseUrl = "http://localhost:3000"
+    this.baseUrl = "https://reto-backend-haciendola-production.up.railway.app"
   }
 
   async register(formValue: any) {
