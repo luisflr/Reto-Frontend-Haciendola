@@ -1,1 +1,20 @@
-<p>product-detail works!</p>
+<div class="product-component">
+  <div *ngIf="product !== undefined" class="product-detail-container">
+    <h1>{{product.title}}</h1>
+    <p><strong>Handle: </strong> {{product.handle}}</p>
+    <div [innerHtml]="product.description"></div>
+    <p> <strong>SKU: </strong> {{product.sku}}</p>
+    <p> <strong>Grams: </strong> {{product.grams}}</p>
+    <p> <strong>Price: </strong> {{product.price}}</p>
+    <p> <strong>Stock: </strong> {{product.stock}}</p>
+    <p> <strong>Compare price: </strong> {{product.compare_price}}</p>
+    <p> <strong>Barcode: </strong> {{product.barcode}}</p>
+  </div>
+  <button mat-icon-button (click)="backPage()" class="btn-back-page">
+    <mat-icon>{{'first_page'}}</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="handleLogout()" class="btn-logout">
+    <mat-icon>{{'logout'}}</mat-icon>
+  </button>
+</div>

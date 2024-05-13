@@ -5,19 +5,7 @@ import { MatPaginator, PageEvent  } from '@angular/material/paginator';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 import { MatTableDataSource } from '@angular/material/table';
-
-interface ProductsInterface {
-  id: number
-  handle: string
-  title: string
-  description: string
-  sku: number
-  grams: string
-  stock: number
-  price: number
-  compare_price: number
-  barcode: number 
-}
+import { ProductInterface } from '../../Interfaces/products.interfaces';
 
 @Component({
   selector: 'app-all-products',
@@ -30,7 +18,7 @@ export class AllProductsComponent implements AfterViewInit {
   productsService = inject(ProductsService);
   userService = inject(UsersService);
   router = inject(Router)
-  products = new MatTableDataSource<ProductsInterface>();
+  products = new MatTableDataSource<ProductInterface>();
   displayedColumns: string[] = ['id', 'handle', 'title', 'stock', 'price', 'edit', 'delete'];
   totalItems: number;
   pageSize: number;
@@ -72,5 +60,9 @@ export class AllProductsComponent implements AfterViewInit {
   async deleteItem(id: number){
     const response = await this.productsService.deleteProduct(id);
     response.error ? this.handleLogout() : this.getProducts();
+  }
+
+  viewItem(id: number){
+    this.router.navigate([`/products/${id}`])
   }
 }
