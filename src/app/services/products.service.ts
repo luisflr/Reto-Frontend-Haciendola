@@ -26,4 +26,10 @@ export class ProductsService {
     ).catch(err => err)
   }
 
+  async deleteProduct(id: number) {
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/products/${id}`, this.httpOptions)
+    ).catch(err => err)
+  }
+
 }

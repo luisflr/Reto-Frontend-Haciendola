@@ -31,7 +31,7 @@ export class AllProductsComponent implements AfterViewInit {
   userService = inject(UsersService);
   router = inject(Router)
   products = new MatTableDataSource<ProductsInterface>();
-  displayedColumns: string[] = ['id', 'handle', 'title', 'stock', 'price'];
+  displayedColumns: string[] = ['id', 'handle', 'title', 'stock', 'price', 'edit', 'delete'];
   totalItems: number;
   pageSize: number;
   totalProducts: any;
@@ -43,16 +43,16 @@ export class AllProductsComponent implements AfterViewInit {
   }
 
   constructor() {
-    this.getProducts()
+    this.getProducts();
   }
 
   async getProducts() {
     const response: any = await this.productsService.getProducts();
     if (response.error) {
-      this.handleLogout()
+      this.handleLogout();
     } else {
-      this.totalItems = 60;
-      this.pageSize = 20;
+      this.totalItems = response.products.length;
+      this.pageSize = 10;
       this.totalProducts = response.products;
       this.products = this.totalProducts.slice(0, this.pageSize);
     }
@@ -64,12 +64,13 @@ export class AllProductsComponent implements AfterViewInit {
   }
 
   onPageChange(event: PageEvent) {
-    const startIndex = event.pageIndex * this.pageSize + 1;
-    const endIndex = startIndex + this.pageSize - 1;
-    this.products = this.totalProducts.slice(startIndex, endIndex)
-    // Aquí puedes realizar cualquier acción que necesites con los índices calculados,
-    // como cargar los elementos correspondientes a la página actual desde tu fuente de datos
+    const startIndex = event.pageIndex * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.products = this.totalProducts.slice(startIndex, endIndex);
+  }
 
-    console.log(`Cargando elementos desde ${startIndex} hasta ${endIndex}`);
+  async deleteItem(id: number){
+    const response = await this.productsService.deleteProduct(id);
+    response.error ? this.handleLogout() : this.getProducts();
   }
 }

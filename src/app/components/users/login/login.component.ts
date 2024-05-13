@@ -26,9 +26,8 @@ export class LoginComponent {
   async onSubmit() {
     const response = await this.userService.login(this.form.value);
     if (!response.error) {
-      console.log(response.token)
       localStorage.setItem('user-access', response.token);
-      this.router.navigate(['/products']);
+      setTimeout(() => this.router.navigate(['/products']), 1000) 
     }
   }
 }
