@@ -1,4 +1,4 @@
-<div class="product-component">
+<section class="product-component">
   <div *ngIf="product !== undefined" class="product-detail-container">
     <h1>{{product.title}}</h1>
     <p><strong>Handle: </strong> {{product.handle}}</p>
@@ -17,4 +17,4 @@
   <button mat-icon-button (click)="handleLogout()" class="btn-logout">
     <mat-icon>{{'logout'}}</mat-icon>
   </button>
-</div>
+</section>

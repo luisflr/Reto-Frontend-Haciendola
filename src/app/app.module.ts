@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllProductsComponent } from './components/products/all-products/all-products.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UpdateProductComponent } from './components/products/update-product/update-product.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RegisterComponent,
     LoginComponent,
     AllProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

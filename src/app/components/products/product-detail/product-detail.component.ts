@@ -24,7 +24,6 @@ export class ProductDetailComponent {
 
   async getProduct() {
     const response = await this.productsService.getProductById(this.id);
-    console.log(response.product)
     response.error ? this.handleLogout() : this.product = response.product
   }
 

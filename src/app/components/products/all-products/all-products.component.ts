@@ -62,7 +62,7 @@ export class AllProductsComponent implements AfterViewInit {
     response.error ? this.handleLogout() : this.getProducts();
   }
 
-  viewItem(id: number){
-    this.router.navigate([`/products/${id}`])
-  }
+  viewItem(id: number){ this.router.navigate([`/products/${id}`]) }
+
+  editItem(id: number){ this.router.navigate([`/products/edit/${id}`]) }
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { ProductInterface } from '../components/Interfaces/products.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,12 @@ export class ProductsService {
   async deleteProduct(id: number) {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/products/${id}`, this.getHeaders())
+    ).catch(err => err)
+  }
+
+  async updateProduct(id: number, formValue: ProductInterface) {
+    return firstValueFrom(
+      this.httpClient.put<any>(`${this.baseUrl}/products/${id}`, formValue, this.getHeaders())
     ).catch(err => err)
   }
 
