@@ -25,4 +25,10 @@ export class UsersService {
       this.httpClient.post<any>(`${this.baseUrl}/login`, formValue)
     ).catch(err => err)
   }
+
+  isAuthenticated(): boolean {
+    return localStorage.getItem('user-access') !== null;
+  }
+
+  logout() { localStorage.removeItem('user-access') }
 }
