@@ -18,6 +18,7 @@ import { AllProductsComponent } from './components/products/all-products/all-pro
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { UpdateProductComponent } from './components/products/update-product/update-product.component';
+import { CreateProductComponent } from './components/products/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UpdateProductComponent } from './components/products/update-product/upd
     LoginComponent,
     AllProductsComponent,
     ProductDetailComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,

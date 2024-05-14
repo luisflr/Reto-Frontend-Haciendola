@@ -26,6 +26,13 @@ export class ProductsService {
       this.httpClient.get<any>(`${this.baseUrl}/products/${id}`, this.getHeaders())
     ).catch(err => err)
   }
+
+  async createProduct(formValue: ProductInterface) {
+    return firstValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/products/`, formValue,this.getHeaders())
+    ).catch(err => err)
+  }
+
   async deleteProduct(id: number) {
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/products/${id}`, this.getHeaders())

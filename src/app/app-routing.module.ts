@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/users/register/register.componen
 import { UpdateProductComponent } from './components/products/update-product/update-product.component';
 
 import { loginGuard } from './guards/login.guard';
+import { CreateProductComponent } from './components/products/create-product/create-product.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,6 +16,11 @@ const routes: Routes = [
   { 
     path: 'products', 
     component: AllProductsComponent,
+    canActivate: [loginGuard]
+  },
+  { 
+    path: 'products/create', 
+    component: CreateProductComponent,
     canActivate: [loginGuard]
   },
   { 

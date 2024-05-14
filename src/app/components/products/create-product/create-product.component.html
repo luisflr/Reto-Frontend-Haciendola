@@ -1,0 +1,22 @@
+<section class="create-product-component">
+  <form [formGroup]="form" class="product-detail-container">
+    <p *ngFor="let item of initialData">
+      <span class="key-input">{{item.key}}:</span>
+      <mat-form-field appearance="outline">
+        <input type="{{item.type}}" formControlName="{{item.key}}" matInput placeholder="{{item.value}}">
+      </mat-form-field>
+    </p>
+  </form>
+  
+  <button mat-icon-button (click)="backPage()" class="btn-back-page">
+    <mat-icon>{{'first_page'}}</mat-icon>
+  </button>
+
+  <button mat-icon-button (click)="handleLogout()" class="btn-logout">
+    <mat-icon>{{'logout'}}</mat-icon>
+  </button>
+
+  <button [disabled]="form.invalid" mat-icon-button (click)="onSubmit()" class="btn-save">
+    <mat-icon>{{'save'}}</mat-icon>
+  </button>
+</section>

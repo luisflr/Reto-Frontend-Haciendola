@@ -65,4 +65,6 @@ export class AllProductsComponent implements AfterViewInit {
   viewItem(id: number){ this.router.navigate([`/products/${id}`]) }
 
   editItem(id: number){ this.router.navigate([`/products/edit/${id}`]) }
+
+  createProduct(){ this.router.navigate(['/products/create']) }
 }
